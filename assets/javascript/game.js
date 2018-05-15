@@ -1,9 +1,10 @@
 /* Global Variables */
-var wordDB = []; // the DB of words to pick from TODO: enter words into the DB
+var wordDB = ["the legend of zelda", "pac man"]; // the DB of words to pick from TODO: enter words into the DB
 var randWord; // random word from the DB TODO: check if needed or can be switched to a local variable
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
+var lettersLeft; // holds the number of letters left for the player to guess FIXME: make sure to update this value in-game
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
 var numOfGuessesLeft; // number of guess left for the player TODO: init with a value
@@ -22,7 +23,7 @@ function isLetter(str) {
 
 // init a random word from the DB using a random index value &  split the word into an array of its letters
 function initWord() {
-    var randIndex = Math.floor((Math.random() * wordDB.length) + 0);
+    var randIndex = Math.floor((Math.random() * wordDB.length)); //returns an index between 0..(wordDB.length-1)
     randWord = wordDB[randIndex];
     currentWord = randWord.split('');
 }
@@ -30,8 +31,10 @@ function initWord() {
 // initialize the player word with _'s
 function initPlayerWord() {
     for (var i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] !== ' ')
+        if (currentWord[i] !== ' ') {
             playerWord[i] = " _ ";
+            lettersLeft++;
+        }
     }
 }
 
