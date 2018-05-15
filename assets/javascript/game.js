@@ -1,6 +1,7 @@
 /* Global Variables */
 var wordDB = []; // the DB of words to pick from TODO: enter words into the DB
 var randWord; // random word from the DB TODO: check if needed or can be switched to a local variable
+var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
 var currentLetter; // holds the current user input
@@ -10,11 +11,12 @@ var numOfWins = []; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
 
 
-// checks if the arg is a letter (returns: true or error msg for the user)
+// checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
 function isLetter(str) {
-    if (str.length === 1 && str.match(/[a-zA-Z]/i))
+    if (str.length === 1 && str.match(/[a-zA-Z]/i)) {
+        currentLetter = str.toLowerCase();
         return true;
-    else return "Please input letters only!";
+    } else return "Please input letters only!";
 }
 
 
@@ -27,8 +29,10 @@ function initWord() {
 
 // initialize the player word with _'s
 function initPlayerWord() {
-    for (var i = 0; i < currentWord.length; i++)
-        playerWord[i] = "_";
+    for (var i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] !== ' ')
+            playerWord[i] = " _ ";
+    }
 }
 
 
@@ -44,8 +48,25 @@ function addWin() {
     this.numOfWins++;
 }
 
+//checks the player win/lose statues TODO: check if obsolete
+function checkIfLost() {
+    return lose;
+}
+
 
 //TODO: runs the game!
 function runGame() {
 
 }
+
+
+//TODO: DELETE TESTS
+/* TESTS */
+// function testWords() {
+//     var word = "the legened of zelda"
+//     word = word.split('');
+//     console.log(word);
+// }
+// testWords();
+
+// console.log(isLetter("A"));
