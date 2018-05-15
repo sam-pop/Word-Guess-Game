@@ -16,7 +16,7 @@ function isLetter(str) {
     if (str.length == 1 && str.match(/[a-zA-Z]/i)) {
         currentLetter = str.toLowerCase();
         return true;
-    } else if (str !== 'Shift')
+    } else if (str !== 'Shift' && str !== 'CapsLock' && str !== 'F5')
         alert("Please input letters only!");
 }
 
@@ -81,9 +81,7 @@ function runGame() {
     console.log(currentWord); //FIXME: delete
     console.log(playerWord); //FIXME: delete
     document.addEventListener("keyup", function (event) {
-        if (isLetter(event.key)) {
-            currentLetter = event.key;
-        }
+        isLetter(event.key);
         checkLetter(currentLetter);
         printPlayerWord();
     });
