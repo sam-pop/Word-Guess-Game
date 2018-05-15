@@ -79,8 +79,8 @@ function checkLetter(ltr) {
 function runGame() {
     initWord();
     initPlayerWord();
-    console.log(currentWord);
-    console.log(playerWord);
+    console.log(currentWord); //FIXME: delete
+    console.log(playerWord); //FIXME: delete
     document.addEventListener("keyup", function (event) {
         if (isLetter(event.key)) {
             currentLetter = event.key;
@@ -95,14 +95,3 @@ function runGame() {
 }
 
 runGame();
-
-//TODO: DELETE TESTS
-/* TESTS */
-// function testWords() {
-//     var word = "first second third"
-//     word = word.split('');
-//     console.log(word);
-// }
-// testWords();
-
-// console.log(isLetter("A"));
