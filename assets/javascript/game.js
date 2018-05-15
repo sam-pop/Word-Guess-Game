@@ -21,7 +21,6 @@ function isLetter(str) {
         alert("Please input letters only!");
 }
 
-
 // init a random word from the DB using a random index value &  split the word into an array of its letters
 function initWord() {
     var randIndex = Math.floor((Math.random() * wordDB.length)); // returns an index from the following interval: [0,wordDB.length)
@@ -32,13 +31,14 @@ function initWord() {
 // initialize the player word with _'s
 function initPlayerWord() {
     for (var i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] !== ' ') {
+        if (currentWord[i] == ' ')
+            playerWord[i] = "-";
+        else {
             playerWord[i] = " _ ";
             lettersLeft++;
         }
     }
 }
-
 
 // decrement the number of guesses left
 function decGuesses() {
@@ -52,20 +52,45 @@ function addWin() {
     this.numOfWins++;
 }
 
-//checks the player win/lose statues TODO: check if obsolete
+// checks the player win/lose statues TODO: check if obsolete
 function checkIfLost() {
     return lose;
 }
 
+// prints the playerWord to the html
+function printPlayerWord() {
+    document.getElementById("playerWord").innerHTML = "";
+    for (var i = 0; i < playerWord.length; i++) {
+        document.getElementById("playerWord").innerHTML += playerWord[i];
+    }
+}
+
+// checks if 'ltr' exists in the currentWord, if it does update playerWord accordingly
+function checkLetter(ltr) {
+    if (currentWord.indexOf(currentLetter) !== -1) {
+        for (var i = 0; i < currentWord.length; i++) {
+            if (currentWord[i] === currentLetter)
+                playerWord[i] = currentLetter;
+        }
+    }
+}
 
 //TODO: runs the game!
 function runGame() {
     initWord();
+    initPlayerWord();
+    console.log(currentWord);
+    console.log(playerWord);
     document.addEventListener("keyup", function (event) {
         if (isLetter(event.key)) {
             currentLetter = event.key;
         }
+        checkLetter(currentLetter);
+        printPlayerWord();
     });
+
+
+    // document.getElementById("game").innerHTML = playerWord;
 
 }
 
