@@ -14,16 +14,17 @@ var lose = false; // holds the current win/lose statues
 
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
 function isLetter(str) {
-    if (str.length === 1 && str.match(/[a-zA-Z]/i)) {
+    if (str.length == 1 && str.match(/[a-zA-Z]/i)) {
         currentLetter = str.toLowerCase();
         return true;
-    } else return "Please input letters only!";
+    } else if (str !== 'Shift')
+        alert("Please input letters only!");
 }
 
 
 // init a random word from the DB using a random index value &  split the word into an array of its letters
 function initWord() {
-    var randIndex = Math.floor((Math.random() * wordDB.length)); //returns an index between 0..(wordDB.length-1)
+    var randIndex = Math.floor((Math.random() * wordDB.length)); // returns an index from the following interval: [0,wordDB.length)
     randWord = wordDB[randIndex];
     currentWord = randWord.split('');
 }
@@ -59,9 +60,16 @@ function checkIfLost() {
 
 //TODO: runs the game!
 function runGame() {
+    initWord();
+    document.addEventListener("keyup", function (event) {
+        if (isLetter(event.key)) {
+            currentLetter = event.key;
+        }
+    });
 
 }
 
+runGame();
 
 //TODO: DELETE TESTS
 /* TESTS */
