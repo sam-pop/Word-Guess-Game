@@ -1,6 +1,5 @@
 /* Global Variables */
 var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros", "donkey kong", "super mario kart", "doom", "mortal kombat", "space invaders", "pokemon", "street fighter", "ms pacman", "tetris", "simcity", "final fantasy", "asteroids", "prince of persia", "duck hunt", "defender", "lemmings", "sonic the hedgehog", "worms", "crash bandicoot", "civilization", "pong", "frogger", "warcraft", "tekken", "golden axe", "diablo", "monkey island", "wolfenstein", "bubble bobble", "commando", "twisted metal", "duke nukem", "carmageddon"]; // the DB of words to pick from TODO: enter words into the DB
-var randWord; // random word from the DB TODO: check if needed or can be switched to a local variable
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
@@ -24,7 +23,7 @@ function isLetter(str) {
 // init a random word from the DB using a random index value &  split the word into an array of its letters
 function initWord() {
     var randIndex = Math.floor((Math.random() * wordDB.length)); // returns an index from the following interval: [0,wordDB.length)
-    randWord = wordDB[randIndex];
+    var randWord = wordDB[randIndex];
     currentWord = randWord.split('');
 }
 
@@ -75,7 +74,7 @@ function checkLetter(ltr) {
     }
 }
 
-//TODO: runs the game!
+//TODO: finish!
 function runGame() {
     initWord();
     initPlayerWord();
@@ -90,8 +89,7 @@ function runGame() {
     });
 
 
-    // document.getElementById("game").innerHTML = playerWord;
-
 }
 
+// EXECUTE
 runGame();
