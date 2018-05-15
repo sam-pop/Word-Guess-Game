@@ -1,5 +1,5 @@
 /* Global Variables */
-var wordDB = ["the legend of zelda", "pac man"]; // the DB of words to pick from TODO: enter words into the DB
+var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros", "donkey kong", "super mario kart", "doom", "mortal kombat", "space invaders", "pokemon", "street fighter", "ms pacman", "tetris", "simcity", "final fantasy", "asteroids", "prince of persia", "duck hunt", "defender", "lemmings", "sonic the hedgehog", "worms", "crash bandicoot", "civilization", "pong", "frogger", "warcraft", "tekken", "golden axe", "diablo", "monkey island", "wolfenstein", "bubble bobble", "commando", "twisted metal", "duke nukem", "carmageddon"]; // the DB of words to pick from TODO: enter words into the DB
 var randWord; // random word from the DB TODO: check if needed or can be switched to a local variable
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
@@ -66,7 +66,7 @@ function runGame() {
 //TODO: DELETE TESTS
 /* TESTS */
 // function testWords() {
-//     var word = "the legened of zelda"
+//     var word = "first second third"
 //     word = word.split('');
 //     console.log(word);
 // }
