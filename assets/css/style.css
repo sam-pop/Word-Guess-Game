@@ -1,0 +1,15 @@
+/* body {
+    background-image: url("../images/bg.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    min-height: 100vh;
+    position: relative;
+} */
+
+div {
+    margin: 0 auto;
+    padding-top: 200px;
+    text-align: center;
+}

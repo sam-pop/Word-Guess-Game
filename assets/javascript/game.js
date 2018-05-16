@@ -3,10 +3,10 @@ var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros",
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
-var lettersLeft = 0; // holds the number of letters left for the player to guess FIXME: make sure to update this value in-game
+var lettersLeft = 0; // holds the number of letters left for the player to guess
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
-var numOfGuessesLeft; // number of guess left for the player TODO: init with a value
+var numOfGuessesLeft; // number of guess left for the player
 var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
 
@@ -97,7 +97,9 @@ function checkLetter(ltr) {
     }
 }
 
-//TODO: finish!
+//TODO: ADD WIN/LOSE FUNCTIONALITY
+//TODO: RESTART GAME (after win/lose)
+//TODO: ADD PRESS ~ANY~ KEY TO BEGIN (right now the first key included in the game already)
 function runGame() {
     initVars();
     initWord();
