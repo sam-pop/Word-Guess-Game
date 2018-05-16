@@ -14,7 +14,7 @@ var lose = false; // holds the current win/lose statues
 function initVars() {
     this.lose = false;
     this.rightGuess = 0;
-    this.numOfGuessesLeft = 3; //FIXME: change value
+    this.numOfGuessesLeft = 5; //FIXME: change value
 }
 
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
@@ -50,6 +50,10 @@ function decGuesses() {
     this.numOfGuessesLeft--;
     if (numOfGuessesLeft === 0)
         lose = true;
+    document.getElementById("lives").innerHTML = "";
+    for (var i = 0; i < numOfGuessesLeft; i++) {
+        document.getElementById("lives").innerHTML += "<img src='./assets/images/heart.png' width='20px' />";
+    }
 }
 
 // adds a win to the total wins tally
@@ -112,7 +116,7 @@ function runGame() {
         isLetter(event.key);
         checkLetter(currentLetter);
         printPlayerWord();
-        console.log(lettersLeft); //FIXME: delete
+        console.log(numOfGuessesLeft); //FIXME: delete
         // if (checkIfLost()) {
         //     alert("game over! you LOST.");
         // }
