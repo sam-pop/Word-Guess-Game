@@ -1,4 +1,4 @@
-/* body {
+.container-fluid {
     background-image: url("../images/bg.png");
     background-position: center;
     background-size: cover;
@@ -6,9 +6,9 @@
     color: black;
     min-height: 100vh;
     position: relative;
-} */
+}
 
-div {
+.main {
     margin: 0 auto;
     padding-top: 200px;
     text-align: center;
