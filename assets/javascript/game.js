@@ -3,19 +3,23 @@ var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros",
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
-var lettersLeft = 0; // holds the number of letters left for the player to guess
+var lettersLeft; // holds the number of letters left for the player to guess
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
-var numOfGuesses = 13; // number of guess left for the player
+var maxGuesses = 3; // number of guess left for the player FIXME: change value
 var numOfGuessesLeft; // number of guess left for the player
 var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
 
 // init variables to default values
-function initVars() {
-    this.lose = false;
+function init() {
     this.rightGuess = 0;
-    this.numOfGuessesLeft = numOfGuesses;
+    this.numOfGuessesLeft = maxGuesses;
+    this.currentLetter = "";
+    this.lettersLeft = 0;
+    this.playerWord = [];
+    this.pastLetters = [];
+    this.lose = false;
 }
 
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
@@ -23,8 +27,11 @@ function isLetter(str) {
     if (str.length == 1 && str.match(/[a-zA-Z]/i)) {
         currentLetter = str.toLowerCase();
         return true;
-    } else if (str !== 'Shift' && str !== 'CapsLock' && str !== 'F5')
+    } else if (str !== 'Shift' && str !== 'CapsLock' && str !== 'F5') {
         alert("Please input letters only!");
+        return false;
+    }
+
 }
 
 // init a random word from the DB using a random index value &  split the word into an array of its letters
@@ -49,15 +56,18 @@ function initPlayerWord() {
 // decrement the number of guesses left
 function decGuesses() {
     this.numOfGuessesLeft--;
-    if (numOfGuessesLeft === 0)
-        lose = true;
+    updateIcons();
+}
+
+function updateIcons() {
     document.getElementById("lives").innerHTML = "";
     for (var i = 0; i < numOfGuessesLeft; i++) {
         document.getElementById("lives").innerHTML += "<img src='./assets/images/heart.png' width='20px' />";
     }
-    // for (var j = 0; j < numOfGuesses - numOfGuessesLeft; j++) {
-    //     document.getElementById("lives").innerHTML += "<img src='./assets/images/empty_heart.png' width='20px' />";
-    // }
+    document.getElementById("wins").innerHTML = "";
+    for (var j = 0; j < numOfWins; j++) {
+        document.getElementById("wins").innerHTML += "<img src='./assets/images/trophy.png' width='20px' />";
+    }
 }
 
 // adds a win to the total wins tally
@@ -67,9 +77,13 @@ function addWin() {
 
 // checks the player win/lose statues TODO: check if obsolete
 function checkIfLost() {
-    return lose;
+    if (numOfGuessesLeft == 0) {
+        lose = true;
+        return lose;
+    } else return lose;
 }
 
+// checks if the player won the game
 function checkIfWon() {
     if (lettersLeft == 0)
         return true;
@@ -94,40 +108,49 @@ function checkLetter(ltr) {
                 playerWord[i] = ltr;
                 currentWord[i] = "";
                 lettersLeft--;
-                checkIfWon(); //FIXME: CHECK IF WON
             }
         }
     } else {
         if (pastLetters.indexOf(ltr) == -1) {
             decGuesses();
             pastLetters.push(ltr);
-            checkIfLost(); //FIXME: CHECK IF LOST
         }
-
     }
 }
 
-//TODO: ADD WIN/LOSE FUNCTIONALITY
+function initGame() {
+    init();
+    initWord();
+    initPlayerWord();
+    updateIcons();
+}
+
+
 //TODO: RESTART GAME (after win/lose)
 //TODO: ADD PRESS ~ANY~ KEY TO BEGIN (right now the first key included in the game already)
 function runGame() {
-    initVars();
-    initWord();
-    initPlayerWord();
-    console.log(currentWord); //FIXME: delete
-    console.log(playerWord); //FIXME: delete
+    initGame();
     document.addEventListener("keyup", function (event) {
-        isLetter(event.key);
-        checkLetter(currentLetter);
-        printPlayerWord();
-        console.log(numOfGuessesLeft); //FIXME: delete
-        // if (checkIfLost()) {
-        //     alert("game over! you LOST.");
-        // }
-        // if (checkIfWon()) {
-        //     alert("YOU WON!");
-        // }
+        if (!checkIfLost()) {
+            printPlayerWord();
+            isLetter(event.key);
+            checkLetter(currentLetter);
+            printPlayerWord();
+            console.log(numOfWins);
+            if (checkIfWon()) {
+                addWin();
+                initGame();
+                document.getElementById("playerWord").innerHTML = "Press any key to start...";
+            }
+        } else {
+            initGame();
+            document.getElementById("playerWord").innerHTML = "Press any key to start...";
+        }
+
     });
+
+
+
 }
 
 // EXECUTE
