@@ -6,6 +6,7 @@ var playerWord = []; // holds the word the player sees
 var lettersLeft = 0; // holds the number of letters left for the player to guess
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
+var numOfGuesses = 13; // number of guess left for the player
 var numOfGuessesLeft; // number of guess left for the player
 var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
@@ -14,7 +15,7 @@ var lose = false; // holds the current win/lose statues
 function initVars() {
     this.lose = false;
     this.rightGuess = 0;
-    this.numOfGuessesLeft = 5; //FIXME: change value
+    this.numOfGuessesLeft = numOfGuesses;
 }
 
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
@@ -54,6 +55,9 @@ function decGuesses() {
     for (var i = 0; i < numOfGuessesLeft; i++) {
         document.getElementById("lives").innerHTML += "<img src='./assets/images/heart.png' width='20px' />";
     }
+    // for (var j = 0; j < numOfGuesses - numOfGuessesLeft; j++) {
+    //     document.getElementById("lives").innerHTML += "<img src='./assets/images/empty_heart.png' width='20px' />";
+    // }
 }
 
 // adds a win to the total wins tally
