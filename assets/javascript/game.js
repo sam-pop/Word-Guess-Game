@@ -75,7 +75,7 @@ function addWin() {
     this.numOfWins++;
 }
 
-// checks the player win/lose statues TODO: check if obsolete
+// checks the player win/lose statues
 function checkIfLost() {
     if (numOfGuessesLeft == 0) {
         lose = true;
@@ -126,8 +126,6 @@ function initGame() {
 }
 
 
-//TODO: RESTART GAME (after win/lose)
-//TODO: ADD PRESS ~ANY~ KEY TO BEGIN (right now the first key included in the game already)
 function runGame() {
     initGame();
     document.addEventListener("keyup", function (event) {
@@ -136,7 +134,6 @@ function runGame() {
             isLetter(event.key);
             checkLetter(currentLetter);
             printPlayerWord();
-            console.log(numOfWins);
             if (checkIfWon()) {
                 addWin();
                 initGame();
