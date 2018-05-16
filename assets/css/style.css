@@ -23,9 +23,18 @@ h2 {
     font-family: 'Bungee Inline', cursive;
 }
 
+h3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 1em;
+    /* padding-top: 25%; */
+}
+
 .main {
+    height: 50vh;
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: 12%;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
 }
