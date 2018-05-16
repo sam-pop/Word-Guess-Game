@@ -7,9 +7,16 @@ var lettersLeft; // holds the number of letters left for the player to guess FIX
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
 var numOfGuessesLeft; // number of guess left for the player TODO: init with a value
-var numOfWins = []; // total number of player wins this round
+var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
+var rightGuess; // holds the number of right guesses
 
+// init variables to default values
+function initVars() {
+    this.lose = false;
+    this.rightGuess = 0;
+    this.numOfGuessesLeft = 13;
+}
 
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
 function isLetter(str) {
@@ -64,18 +71,27 @@ function printPlayerWord() {
     }
 }
 
-// checks if 'ltr' exists in the currentWord, if it does update playerWord accordingly
+// checks if 'ltr' exists in the currentWord: exists - update playerWord accordingly.
+//                                            doesn't exist - it updates the number of guesses left and push the letter to the pastLetters array
 function checkLetter(ltr) {
-    if (currentWord.indexOf(currentLetter) !== -1) {
+    if (currentWord.indexOf(ltr) !== -1) {
+        rightGuess++;
         for (var i = 0; i < currentWord.length; i++) {
-            if (currentWord[i] === currentLetter)
-                playerWord[i] = currentLetter;
+            if (currentWord[i] === ltr)
+                playerWord[i] = ltr;
         }
+    } else {
+        if (pastLetters.indexOf(ltr) == -1) {
+            decGuesses();
+            pastLetters.push(ltr);
+        }
+
     }
 }
 
 //TODO: finish!
 function runGame() {
+    initVars();
     initWord();
     initPlayerWord();
     console.log(currentWord); //FIXME: delete
@@ -84,6 +100,7 @@ function runGame() {
         isLetter(event.key);
         checkLetter(currentLetter);
         printPlayerWord();
+        // if (checkIfLost())
     });
 
 
