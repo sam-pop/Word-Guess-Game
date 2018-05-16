@@ -11,8 +11,16 @@
 header {
     padding-top: 3%;
     text-align: center;
-    font-size: 2em;
+}
+
+h1 {
+    font-size: 3em;
     font-family: 'Faster One', cursive;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-family: 'Bungee Inline', cursive;
 }
 
 .main {
