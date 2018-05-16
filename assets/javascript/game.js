@@ -109,11 +109,13 @@ function runGame() {
         checkLetter(currentLetter);
         printPlayerWord();
         console.log(lettersLeft); //FIXME: delete
+        // if (checkIfLost()) {
+        //     alert("game over! you LOST.");
+        // }
+        // if (checkIfWon()) {
+        //     alert("YOU WON!");
+        // }
     });
-    if (checkIfLost())
-        alert("game over! you LOST.");
-    if (checkIfWon())
-        alert("YOU WON!");
 }
 
 // EXECUTE
