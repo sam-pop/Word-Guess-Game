@@ -86,12 +86,14 @@ function checkLetter(ltr) {
                 playerWord[i] = ltr;
                 currentWord[i] = "";
                 lettersLeft--;
+                checkIfWon(); //FIXME: CHECK IF WON
             }
         }
     } else {
         if (pastLetters.indexOf(ltr) == -1) {
             decGuesses();
             pastLetters.push(ltr);
+            checkIfLost(); //FIXME: CHECK IF LOST
         }
 
     }
