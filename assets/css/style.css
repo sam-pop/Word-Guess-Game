@@ -39,7 +39,7 @@ h3 {
 }
 
 .bottom {
-    padding-top: 25%;
+    padding-top: 15%;
 }
 
 .footer {
@@ -51,8 +51,12 @@ h3 {
     background-color: rgba(0, 0, 0, 0.76);
 }
 
+#guessed {
+    padding-top: 10%;
+}
+
 #messages {
-    padding-top: 30%;
+    padding-top: 20%;
     font-size: 0.8em;
     color: darkred;
 }

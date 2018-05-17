@@ -103,12 +103,13 @@ function printPlayerWord() {
     for (var i = 0; i < playerWord.length; i++) {
         document.getElementById("playerWord").innerHTML += playerWord[i];
     }
+    document.getElementById("guessed").innerHTML = pastLetters;
 }
 
-// checks if 'ltr' exists in the currentWord: exists - update playerWord accordingly.
-//                                            doesn't exist - it updates the number of guesses left and push the letter to the pastLetters array
+// checks if 'ltr' exists in the currentWord: if exists - update playerWord accordingly.
+//                                            if doesn't exist - it updates the number of guesses left and push the letter to the pastLetters array
 function checkLetter(ltr) {
-    if (currentWord.indexOf(ltr) !== -1) {
+    if (currentWord.indexOf(ltr) !== -1 || playerWord.indexOf(ltr) !== -1) {
         for (var i = 0; i < currentWord.length; i++) {
             if (currentWord[i] === ltr) {
                 playerWord[i] = ltr;
@@ -141,6 +142,8 @@ function initGame() {
 function runGame() {
     initGame();
     document.addEventListener("keyup", function (event) {
+        console.log("current " + currentWord);
+        console.log("past " + pastLetters);
         if (!checkIfLost()) {
             printPlayerWord();
             isLetter(event.key);
