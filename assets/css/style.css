@@ -43,8 +43,9 @@ h3 {
 }
 
 .footer {
-    font-family: 'Geo', sans-serif;
     position: absolute;
+    font-size: 0.5em;
+    font-family: 'Press Start 2P', cursive;
     bottom: 0;
     left: 0;
     color: rgb(30, 102, 184);
