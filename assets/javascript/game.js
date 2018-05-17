@@ -1,6 +1,6 @@
 /* Global Variables */
 var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros", "donkey kong", "super mario kart", "doom", "mortal kombat", "space invaders", "pokemon", "street fighter", "ms pacman", "tetris", "simcity", "final fantasy", "asteroids", "prince of persia", "duck hunt", "defender", "lemmings", "sonic the hedgehog", "worms", "crash bandicoot", "civilization", "pong", "frogger", "warcraft", "tekken", "golden axe", "diablo", "monkey island", "wolfenstein", "bubble bobble", "commando", "twisted metal", "duke nukem", "carmageddon"]; // the DB of words to pick from TODO: enter words into the DB
-var music = ["pacman"];
+var music = ["pacman", "mario"];
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
@@ -11,6 +11,12 @@ var maxGuesses = 10; // number of guess left for the player
 var numOfGuessesLeft; // number of guess left for the player
 var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
+
+// returns a random index in the range [0..max)
+function randIndex(max) {
+    var index = Math.floor((Math.random() * max));
+    return index;
+}
 
 // init variables to default values
 function init() {
@@ -35,10 +41,10 @@ function isLetter(str) {
     }
 }
 
-// init a random word from the DB using a random index value &  split the word into an array of its letters
+// init a random word from the DB using a random index value & split the word into an array of its letters
 function initWord() {
-    var randIndex = Math.floor((Math.random() * wordDB.length)); // returns an index from the following interval: [0,wordDB.length)
-    var randWord = wordDB[randIndex];
+    var ind = randIndex(wordDB.length);
+    var randWord = wordDB[ind];
     currentWord = randWord.split('');
 }
 
@@ -120,7 +126,7 @@ function checkLetter(ltr) {
 
 // plays audio file (.mp3)
 function playAudio() {
-    var audio = new Audio("./assets/media/" + music[0] + ".mp3");
+    var audio = new Audio("./assets/media/" + music[randIndex(music.length)] + ".mp3");
     audio.play();
 }
 
