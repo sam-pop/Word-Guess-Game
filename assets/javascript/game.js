@@ -1,5 +1,6 @@
 /* Global Variables */
 var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros", "donkey kong", "super mario kart", "doom", "mortal kombat", "space invaders", "pokemon", "street fighter", "ms pacman", "tetris", "simcity", "final fantasy", "asteroids", "prince of persia", "duck hunt", "defender", "lemmings", "sonic the hedgehog", "worms", "crash bandicoot", "civilization", "pong", "frogger", "warcraft", "tekken", "golden axe", "diablo", "monkey island", "wolfenstein", "bubble bobble", "commando", "twisted metal", "duke nukem", "carmageddon"]; // the DB of words to pick from TODO: enter words into the DB
+var music = ["pacman"];
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
@@ -32,7 +33,6 @@ function isLetter(str) {
         document.getElementById("messages").innerHTML = "Please input letters only!";
         return false;
     }
-
 }
 
 // init a random word from the DB using a random index value &  split the word into an array of its letters
@@ -86,10 +86,9 @@ function checkIfLost() {
 
 // checks if the player won the game
 function checkIfWon() {
-    if (lettersLeft == 0)
+    if (lettersLeft == 0) {
         return true;
-    else return false;
-
+    } else return false;
 }
 
 // prints the playerWord to the html
@@ -119,6 +118,12 @@ function checkLetter(ltr) {
     }
 }
 
+// plays audio file (.mp3)
+function playAudio() {
+    var audio = new Audio("./assets/media/" + music[0] + ".mp3");
+    audio.play();
+}
+
 function initGame() {
     init();
     initWord();
@@ -136,6 +141,7 @@ function runGame() {
             checkLetter(currentLetter);
             printPlayerWord();
             if (checkIfWon()) {
+                playAudio();
                 addWin();
                 initGame();
                 document.getElementById("playerWord").innerHTML = "Press any key to start...";
