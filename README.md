@@ -5,8 +5,10 @@ In this game you need to guess the name of the retro video game using one letter
 ### Retro games are awesome!
 Yes, they are! <br>
 
-## What i used:
+## What i used
 This game was built using vanilla JavaScript, HTML5, Bootstrap 4 & CSS3.
 
-## Demo:
+## Demo
 http://sam-pop.github.io/Word-Guess-Game/
+<br>
+<center><img src="./assets/images/WGG.jpg"></center>
