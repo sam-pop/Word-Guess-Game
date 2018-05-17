@@ -43,10 +43,19 @@ h3 {
 }
 
 #messages {
-    animation: blinker 1s linear infinite;
     padding-top: 30%;
     font-size: 0.8em;
     color: darkred;
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 
 /* 

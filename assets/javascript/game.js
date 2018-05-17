@@ -6,7 +6,7 @@ var playerWord = []; // holds the word the player sees
 var lettersLeft; // holds the number of letters left for the player to guess
 var currentLetter; // holds the current user input
 var pastLetters = []; // letter already used by the player
-var maxGuesses = 3; // number of guess left for the player FIXME: change value
+var maxGuesses = 10; // number of guess left for the player
 var numOfGuessesLeft; // number of guess left for the player
 var numOfWins = 0; // total number of player wins this round
 var lose = false; // holds the current win/lose statues
