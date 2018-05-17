@@ -142,8 +142,6 @@ function initGame() {
 function runGame() {
     initGame();
     document.addEventListener("keyup", function (event) {
-        console.log("current " + currentWord);
-        console.log("past " + pastLetters);
         if (!checkIfLost()) {
             printPlayerWord();
             isLetter(event.key);
