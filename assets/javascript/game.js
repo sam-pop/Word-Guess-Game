@@ -1,6 +1,6 @@
 /* Global Variables */
 var wordDB = ["the legend of zelda", "pacman", "mario bros", "super mario bros", "donkey kong", "super mario kart", "doom", "mortal kombat", "space invaders", "pokemon", "street fighter", "ms pacman", "tetris", "simcity", "final fantasy", "asteroids", "prince of persia", "duck hunt", "defender", "lemmings", "sonic the hedgehog", "worms", "crash bandicoot", "civilization", "pong", "frogger", "warcraft", "tekken", "golden axe", "diablo", "monkey island", "wolfenstein", "bubble bobble", "commando", "twisted metal", "duke nukem", "carmageddon"]; // the DB of words to pick from TODO: enter words into the DB
-var music = ["pacman", "mario"];
+var music = ["pacman", "mario", "frogger", "tron", "donkykong", "doom", "princeofpersia", "sonic"];
 var currentLetter; // holds the current letter the user has input
 var currentWord = []; // holds an array of letters the represent the current word
 var playerWord = []; // holds the word the player sees 
