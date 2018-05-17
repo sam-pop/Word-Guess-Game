@@ -153,9 +153,7 @@ function runGame() {
                 playAudio();
                 addWin();
                 initGame();
-                document.getElementById("messages").innerHTML = "YOU WON! Congratulations.";
-
-                document.getElementById("playerWord").innerHTML = "<h2>Press any key to start...</h2>";
+                document.getElementById("messages").innerHTML = "YOU WON! Congratulations.<br><br>Press any key to play again";
             }
         } else {
             document.getElementById("messages").innerHTML = "YOU LOST!<br>Try again.";
