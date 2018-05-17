@@ -84,7 +84,7 @@ function addWin() {
 
 // checks the player win/lose statues
 function checkIfLost() {
-    if (numOfGuessesLeft == 0) {
+    if (numOfGuessesLeft == 1) { //compensating for the runGame call order
         lose = true;
         return lose;
     } else return lose;
@@ -150,11 +150,14 @@ function runGame() {
                 playAudio();
                 addWin();
                 initGame();
-                document.getElementById("playerWord").innerHTML = "Press any key to start...";
+                document.getElementById("messages").innerHTML = "YOU WON! Congratulations.";
+
+                document.getElementById("playerWord").innerHTML = "<h2>Press any key to start...</h2>";
             }
         } else {
+            document.getElementById("messages").innerHTML = "YOU LOST!<br>Try again.";
+            document.getElementById("playerWord").innerHTML = "<h2>Press any key to start...</h2>";
             initGame();
-            document.getElementById("playerWord").innerHTML = "Press any key to start...";
         }
 
     });
