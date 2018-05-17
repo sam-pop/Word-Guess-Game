@@ -27,13 +27,12 @@ h3 {
     position: absolute;
     left: 25%;
     font-size: 0.8em;
-    /* padding-top: 25%; */
 }
 
 .main {
     height: 50vh;
     margin: 0 auto;
-    padding-top: 12%;
+    padding-top: 5%;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
 }
@@ -58,7 +57,7 @@ h3 {
 }
 
 #messages {
-    padding-top: 20%;
+    padding-top: 18%;
     font-size: 0.8em;
     color: darkred;
 }
