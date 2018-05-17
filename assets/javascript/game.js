@@ -25,10 +25,11 @@ function init() {
 // checks if the arg is a letter (convers it to lowercase if true or error msg for the user if false)
 function isLetter(str) {
     if (str.length == 1 && str.match(/[a-zA-Z]/i)) {
+        document.getElementById("messages").innerHTML = "";
         currentLetter = str.toLowerCase();
         return true;
     } else if (str !== 'Shift' && str !== 'CapsLock' && str !== 'F5') {
-        alert("Please input letters only!");
+        document.getElementById("messages").innerHTML = "Please input letters only!";
         return false;
     }
 

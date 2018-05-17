@@ -42,6 +42,13 @@ h3 {
     padding-top: 25%;
 }
 
+#messages {
+    animation: blinker 1s linear infinite;
+    padding-top: 30%;
+    font-size: 0.8em;
+    color: darkred;
+}
+
 /* 
 font-family: 'Bungee Inline', cursive;
 font-family: 'Bungee Shade', cursive;
