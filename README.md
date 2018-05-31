@@ -14,4 +14,5 @@ This game was built using vanilla JavaScript, HTML5, Bootstrap 4 & CSS3.
 ## Demo
 
 [http://sam-pop.github.io/Word-Guess-Game/](http://sam-pop.github.io/Word-Guess-Game/)
+
 [![Word Guess Game Screenshot](https://s7.postimg.cc/p9a9qcdvf/WGG.png)](http://sam-pop.github.io/Word-Guess-Game)
